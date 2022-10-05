@@ -4250,7 +4250,11 @@ void map_reloadnpc(bool clear)
 	if (clear)
 		npc_addsrcfile("clear", false); // this will clear the current script list
 
-	map_reloadnpc_sub("npc/scripts_main.conf");
+#ifdef RENEWAL
+	map_reloadnpc_sub("npc/re/scripts_main.conf");
+#else
+	map_reloadnpc_sub("npc/pre-re/scripts_main.conf");
+#endif
 }
 
 int inter_config_read(const char *cfgName)
